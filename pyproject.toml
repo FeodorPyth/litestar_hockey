@@ -1,0 +1,12 @@
+[project]
+name = "litestar-hockey"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "litestar[full]>=2.21.1",
+]
+
+[tool.flake8]
+max-line-length = 120
