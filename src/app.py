@@ -1,6 +1,8 @@
 from litestar import Litestar, get
 from litestar.openapi import OpenAPIConfig
 
+from db.base import alchemy
+
 
 @get("/")
 async def index() -> str:
@@ -17,6 +19,6 @@ app = Litestar(
     openapi_config=OpenAPIConfig(
         title="My API",
         version="1.0.0",
-        use_cdn=False,  # Принудительно использовать локальные файлы
     ),
+    plugins=[alchemy],
 )

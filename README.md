@@ -2,3 +2,8 @@
 ```bash
 uv run uvicorn src.app:app --reload
 ```
+
+
+export LITESTAR_APP=main:app
+
+uv run litestar --app-dir src --app app:app database 

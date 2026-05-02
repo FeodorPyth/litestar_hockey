@@ -1,3 +1,5 @@
+import msgspec
+
 from src.domain.cities.schemas import City
 from src.domain.players.schemas import Player
 from src.domain.stadiums.schemas import Stadium
@@ -10,5 +12,19 @@ class Team(CamelizedBaseStruct):
     
     city: City
     stadium: Stadium
-    players: list[Player]
-    coaches: list[Coach]
+    players: list[Player] | None = None
+    coaches: list[Coach] | None = None
+
+
+class TeamCreate(CamelizedBaseStruct):
+    name: str
+
+    city_name: str
+    stadium_name: str
+
+
+class TeamUpdate(CamelizedBaseStruct, omit_defaults=True):
+    name: str | msgspec.UnsetType | None = msgspec.UNSET
+
+    city_name: str | msgspec.UnsetType | None = msgspec.UNSET
+    stadium_name: str | msgspec.UnsetType | None = msgspec.UNSET

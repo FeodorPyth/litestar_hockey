@@ -5,8 +5,14 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "advanced-alchemy>=1.9.3",
+    "asyncpg>=0.31.0",
     "litestar[full]>=2.21.1",
+    "pydantic-settings>=2.14.0",
 ]
 
 [tool.flake8]
 max-line-length = 120
+
+[tool.litestar]
+app = "app:app"
