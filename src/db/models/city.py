@@ -13,11 +13,9 @@ if TYPE_CHECKING:
 class City(base.UUIDv7AuditBase):
     __tablename__ = "cities"
 
-    __table_args__ = (
-        UniqueConstraint("name", "district", name="unique_city_per_district"),
-    )
+    __table_args__ = (UniqueConstraint("name", "district", name="unique_city_per_district"),)
 
-    name: Mapped[str] =  mapped_column(unique=True, index=True)
+    name: Mapped[str] = mapped_column(unique=True, index=True)
     district: Mapped[str]
 
     stadiums: Mapped[list[Stadium]] = relationship(

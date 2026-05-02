@@ -18,9 +18,7 @@ class Coach(base.UUIDv7AuditBase):
             "unique_head_coach_per_team",
             "team_id",
             unique=True,
-            postgresql_where=(
-                text("is_head_coach IS TRUE")
-            ),
+            postgresql_where=(text("is_head_coach IS TRUE")),
         ),
     )
 

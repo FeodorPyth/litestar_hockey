@@ -18,9 +18,7 @@ class Team(base.UUIDv7AuditBase):
 
     name: Mapped[str] = mapped_column(unique=True, index=True)
 
-    city_id: Mapped[UUID] = mapped_column(
-        ForeignKey("cities.id", ondelete="CASCADE")
-    )
+    city_id: Mapped[UUID] = mapped_column(ForeignKey("cities.id", ondelete="CASCADE"))
     city: Mapped[City] = relationship(back_populates="teams")
 
     players: Mapped[list[Player]] = relationship(
@@ -28,9 +26,7 @@ class Team(base.UUIDv7AuditBase):
         lazy="selectin",
     )
 
-    stadium_id: Mapped[UUID] = mapped_column(
-        ForeignKey("stadiums.id", ondelete="CASCADE")
-    )
+    stadium_id: Mapped[UUID] = mapped_column(ForeignKey("stadiums.id", ondelete="CASCADE"))
     stadium: Mapped[Stadium] = relationship(back_populates="teams")
 
     coaches: Mapped[list[Coach]] = relationship(

@@ -1,3 +1,3 @@
 from .stadium import Stadium
 
-__all__ = ("Stadium", )
+__all__ = ("Stadium",)

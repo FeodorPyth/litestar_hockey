@@ -8,7 +8,7 @@ class Coach(CamelizedBaseStruct):
     name: str
     surname: str
 
-    is_head_coach: bool =  False
+    is_head_coach: bool = False
 
     team: Team | None = None
 

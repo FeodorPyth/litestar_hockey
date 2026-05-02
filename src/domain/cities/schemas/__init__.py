@@ -1,3 +1,3 @@
 from .city import City
 
-__all__ = ("City", )
+__all__ = ("City",)

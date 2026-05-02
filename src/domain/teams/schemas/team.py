@@ -9,7 +9,7 @@ from src.lib.schema import CamelizedBaseStruct
 
 class Team(CamelizedBaseStruct):
     name: str
-    
+
     city: City
     stadium: Stadium
     players: list[Player] | None = None

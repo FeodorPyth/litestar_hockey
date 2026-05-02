@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncEngine, async_engine_from_config
 from advanced_alchemy.base import metadata_registry
 from alembic import context
 
-from db.models import *
+from db.models import *  # noqa: F403
 
 if TYPE_CHECKING:
     from sqlalchemy.engine import Connection

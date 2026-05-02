@@ -1,3 +1,3 @@
 from .stuff import Coach
 
-__all__ = ("Coach", )
+__all__ = ("Coach",)
