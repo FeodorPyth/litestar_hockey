@@ -1,10 +1,10 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
+from uuid import UUID
 
 from advanced_alchemy.extensions.litestar import base
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from uuid import UUID
 
 if TYPE_CHECKING:
     from src.db.models.city import City
@@ -17,6 +17,8 @@ class Team(base.UUIDv7AuditBase):
     __tablename__ = "teams"
 
     name: Mapped[str] = mapped_column(unique=True, index=True)
+
+    image_path: Mapped[str | None] = mapped_column(String(500), nullable=True, default=None)
 
     city_id: Mapped[UUID] = mapped_column(ForeignKey("cities.id", ondelete="CASCADE"))
     city: Mapped[City] = relationship(back_populates="teams")

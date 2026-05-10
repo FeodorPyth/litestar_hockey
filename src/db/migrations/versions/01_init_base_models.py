@@ -53,7 +53,7 @@ sa.FernetBackend = FernetBackend
 sa.PGCryptoBackend = PGCryptoBackend
 
 # revision identifiers, used by Alembic.
-revision = "c7fbb7e16b18"
+revision = "01"
 down_revision = None
 branch_labels = None
 depends_on = None

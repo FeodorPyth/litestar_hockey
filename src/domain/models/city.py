@@ -1,11 +1,18 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
 import msgspec
 
-from src.domain.stadiums.schemas import Stadium
-from src.domain.teams.schemas import Team
-from src.lib.schema import CamelizedBaseStruct
+from uuid import UUID
+
+from lib.schema import CamelizedBaseStruct
+
+if TYPE_CHECKING:
+    from domain.models.stadium import Stadium
+    from domain.models.team import Team
 
 
 class City(CamelizedBaseStruct):
+    id: UUID
     name: str
     district: str
 

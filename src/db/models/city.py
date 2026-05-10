@@ -2,7 +2,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from advanced_alchemy.extensions.litestar import base
-from sqlalchemy import UniqueConstraint
+from sqlalchemy import UniqueConstraint, String
 from sqlalchemy.orm import Mapped, relationship, mapped_column
 
 if TYPE_CHECKING:
@@ -17,6 +17,8 @@ class City(base.UUIDv7AuditBase):
 
     name: Mapped[str] = mapped_column(unique=True, index=True)
     district: Mapped[str]
+
+    image_path: Mapped[str | None] = mapped_column(String(500), nullable=True, default=None)
 
     stadiums: Mapped[list[Stadium]] = relationship(
         back_populates="city",

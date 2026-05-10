@@ -9,6 +9,7 @@ dependencies = [
     "asyncpg>=0.31.0",
     "litestar[full]>=2.21.1",
     "pydantic-settings>=2.14.0",
+    "uuid-utils>=0.14.1",
 ]
 
 [tool.flake8]

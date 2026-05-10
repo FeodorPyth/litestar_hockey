@@ -1,10 +1,10 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
+from uuid import UUID
 
 from advanced_alchemy.extensions.litestar import base
-from sqlalchemy import CheckConstraint, ForeignKey, UniqueConstraint
+from sqlalchemy import CheckConstraint, ForeignKey, UniqueConstraint, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from uuid import UUID
 
 if TYPE_CHECKING:
     from src.db.models.team import Team
@@ -21,6 +21,8 @@ class Player(base.UUIDv7AuditBase):
 
     name: Mapped[str]
     surname: Mapped[str] = mapped_column(index=True)
+
+    image_path: Mapped[str | None] = mapped_column(String(500), nullable=True, default=None)
 
     height: Mapped[int] = mapped_column(comment="Height in cm")
     weight: Mapped[int] = mapped_column(comment="Weight in kg")

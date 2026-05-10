@@ -1,8 +1,12 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
 import msgspec
 from enum import StrEnum
 
-from src.domain.teams.schemas import Team
-from src.lib.schema import CamelizedBaseStruct
+from lib.schema import CamelizedBaseStruct
+
+if TYPE_CHECKING:
+    from domain.models.team import Team
 
 
 class StickGrip(StrEnum):
@@ -29,13 +33,21 @@ class PlayerCreate(CamelizedBaseStruct):
     name: str
     surname: str
 
-    height: int = msgspec.field(ge=1, le=300)
-    weight: int = msgspec.field(ge=1, le=200)
+    height: int
+    weight: int
 
     number: int
     stick_grip: StickGrip
 
     team_name: str | msgspec.UnsetType | None = msgspec.UNSET
+
+    def __post_init__(self):
+        if not 1 <= self.height <= 300:
+            raise ValueError("Height must be between 1 and 300 cm")
+        if not 1 <= self.weight <= 200:
+            raise ValueError("Weight must be between 1 and 200 kg")
+        if not 0 <= self.number <= 99:
+            raise ValueError("Number must be between 0 and 99")
 
 
 class PlayerUpdate(CamelizedBaseStruct, omit_defaults=True):

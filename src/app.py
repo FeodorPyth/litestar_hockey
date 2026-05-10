@@ -1,24 +1,24 @@
-from litestar import Litestar, get
+from pathlib import Path
+
+from litestar import Litestar
 from litestar.openapi import OpenAPIConfig
+from litestar.static_files import create_static_files_router
 
 from db.base import alchemy
+from handlers import base_router
 
-
-@get("/")
-async def index() -> str:
-    return "Hello, world!"
-
-
-@get("/players/{player_id:str}")
-async def get_book(player_id: str) -> dict[str, str]:
-    return {"player_id": player_id}
-
+static_router = create_static_files_router(
+    path="/static",
+    directories=[Path("uploads")],
+    name="static",
+)
 
 app = Litestar(
-    [index, get_book],
+    route_handlers=[static_router, base_router],
     openapi_config=OpenAPIConfig(
         title="My API",
         version="1.0.0",
     ),
     plugins=[alchemy],
+    debug=True,
 )

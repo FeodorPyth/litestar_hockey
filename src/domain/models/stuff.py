@@ -1,7 +1,11 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
 import msgspec
 
-from src.domain.teams.schemas import Team
-from src.lib.schema import CamelizedBaseStruct
+from lib.schema import CamelizedBaseStruct
+
+if TYPE_CHECKING:
+    from domain.models.team import Team
 
 
 class Coach(CamelizedBaseStruct):

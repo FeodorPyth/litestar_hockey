@@ -1,10 +1,14 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
 import msgspec
 
-from src.domain.cities.schemas import City
-from src.domain.players.schemas import Player
-from src.domain.stadiums.schemas import Stadium
-from src.domain.stuff.schemas import Coach
-from src.lib.schema import CamelizedBaseStruct
+from lib.schema import CamelizedBaseStruct
+
+if TYPE_CHECKING:
+    from domain.models.city import City
+    from domain.models.player import Player
+    from domain.models.stadium import Stadium
+    from domain.models.stuff import Coach
 
 
 class Team(CamelizedBaseStruct):

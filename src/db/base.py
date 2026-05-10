@@ -7,7 +7,7 @@ from advanced_alchemy.extensions.litestar import (
 )
 from advanced_alchemy.config import AlembicAsyncConfig
 
-from src.lib.settings import settings
+from lib.settings import settings
 
 session_config = AsyncSessionConfig(expire_on_commit=False)
 alchemy_config = SQLAlchemyAsyncConfig(

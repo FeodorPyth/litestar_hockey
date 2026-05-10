@@ -1,10 +1,10 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
+from uuid import UUID
 
 from advanced_alchemy.extensions.litestar import base
-from sqlalchemy import ForeignKey, Index, false, text
+from sqlalchemy import ForeignKey, Index, String, false, text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from uuid import UUID
 
 if TYPE_CHECKING:
     from src.db.models.team import Team
@@ -24,6 +24,8 @@ class Coach(base.UUIDv7AuditBase):
 
     name: Mapped[str]
     surname: Mapped[str] = mapped_column(index=True)
+
+    image_path: Mapped[str | None] = mapped_column(String(500), nullable=True, default=None)
 
     is_head_coach: Mapped[bool] = mapped_column(default=False, server_default=false())
     team_id: Mapped[UUID | None] = mapped_column(
