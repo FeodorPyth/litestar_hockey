@@ -13,6 +13,7 @@ if TYPE_CHECKING:
 
 class City(CamelizedBaseStruct):
     id: UUID
+
     name: str
     district: str
 
